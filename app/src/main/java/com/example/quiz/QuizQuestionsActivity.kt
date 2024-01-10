@@ -32,13 +32,10 @@ class QuizQuestionsActivity : AppCompatActivity() , View.OnClickListener {
     private var imageView: ImageView? = null
     private var buttonSubmit: Button? = null
 
+    private var pointsAmount: Int = 8
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val userName: String? = intent.getStringExtra("playerName")
-        Log.i("username", "$userName")
-
         setContentView(R.layout.activity_quiz_questions)
 
         questionsList = Constants.getQuestions()
@@ -71,7 +68,7 @@ class QuizQuestionsActivity : AppCompatActivity() , View.OnClickListener {
         textviewQuestion?.text = question.question
         imageView?.setImageResource(question.image)
         progressBar?.progress = currentIndex
-        textviewProgressBar?.text = "$currentIndex/${progressBar?.max}"
+        textviewProgressBar?.text = "$currentIndex/${questionsList?.size}"
 
         textviewOptionOne?.text = question.optionOne
         textviewOptionTwo?.text = question.optionTwo
@@ -146,8 +143,10 @@ class QuizQuestionsActivity : AppCompatActivity() , View.OnClickListener {
                             setQuestion()
                         }
                         else -> {
-                            Log.i("nextActivity", "nastapi przeniesienie")
+                            val userName: String? = intent.getStringExtra("playerName")
                             val intent = Intent(this, ResultsActivity::class.java)
+                            intent.putExtra("playerName", "$userName")
+                            intent.putExtra("pointsAmount", "$pointsAmount")
                             startActivity(intent)
                             finish()
                         }
@@ -156,8 +155,12 @@ class QuizQuestionsActivity : AppCompatActivity() , View.OnClickListener {
                     val question = questionsList?.get(currentIndex-1)
                     if(question!!.correctAnswer != selectedOptionPosition){
                         answerView(selectedOptionPosition, R.drawable.wrong_option_border_bg)
+
+                        pointsAmount-- //odejmowanie blędnych odpowiedzi
                     }
                     answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+
+                    Log.i("pointsAmount", "$pointsAmount")
 
                     if(currentIndex == questionsList!!.size){
                         buttonSubmit?.text = "Koniec"

@@ -19,9 +19,11 @@ class MainActivity : AppCompatActivity() {
         btnStart.setOnClickListener {
             if(editTextName.text.isEmpty()){
                 Log.i("validationInputName", "Nie ma podanego imienia")
+                Toast.makeText(this, "Nie podano imienia", Toast.LENGTH_SHORT).show()
             }
             else if(editTextName.text.length < 3){
-                Log.i("validationInputName", "Imie jest za krotkie")
+                Log.i("validationInputName", "Imie jest za krótkie")
+                Toast.makeText(this, "Za ktrótkie Imie", Toast.LENGTH_SHORT).show()
             }
             else{
                 Log.i("validationInputName", "Imie zostało podane")
