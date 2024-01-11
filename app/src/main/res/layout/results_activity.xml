@@ -37,13 +37,13 @@
         />
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         app:boxStrokeColor="#000000"
         app:boxStrokeWidth="2dp"
-        app:cardBackgroundColor="#A3FFFFFF">
+        app:cardBackgroundColor="#AAFFFFFF">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="50sp"
                 android:layout_margin="5dp"
-                android:text="Z"
+                android:text="/"
                 android:textColor="#000000"
                 />
             <TextView
@@ -100,6 +100,7 @@
         android:textSize="25sp"
         android:textColor="#000000"
         android:backgroundTint="#FFFFFF"
+        app:rippleColor="#BABABA"
         android:onClick="onAgainClick"
         />
 

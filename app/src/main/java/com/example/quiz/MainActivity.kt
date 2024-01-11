@@ -16,17 +16,20 @@ class MainActivity : AppCompatActivity() {
         val editTextName: EditText = findViewById(R.id.edit_text_name)
         val btnStart: Button = findViewById(R.id.start)
 
+        //zapamiętanie poprzednej nazwy
+        val playerName = intent.getStringExtra("playerName")
+        if (playerName != null){
+            editTextName.setText("$playerName")
+        }
+
         btnStart.setOnClickListener {
             if(editTextName.text.isEmpty()){
-                Log.i("validationInputName", "Nie ma podanego imienia")
                 Toast.makeText(this, "Nie podano imienia", Toast.LENGTH_SHORT).show()
             }
             else if(editTextName.text.length < 3){
-                Log.i("validationInputName", "Imie jest za krótkie")
                 Toast.makeText(this, "Za ktrótkie Imie", Toast.LENGTH_SHORT).show()
             }
             else{
-                Log.i("validationInputName", "Imie zostało podane")
                 val intent = Intent(this, QuizQuestionsActivity::class.java)
                 intent.putExtra("playerName", editTextName.text.toString())
                 startActivity(intent)

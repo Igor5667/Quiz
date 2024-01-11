@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
-                android:text="Witam"
+                android:text="HEJKA"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -59,12 +59,12 @@
                 app:boxStrokeWidth="2dp">
 
                 <androidx.appcompat.widget.AppCompatEditText
-
                     android:id="@+id/edit_text_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textCapCharacters"
                     android:textColor="#000000" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
@@ -72,7 +72,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="START" />
+                android:text="START"
+                android:textColor="@color/white"
+                android:backgroundTint="#032A59"
+                app:rippleColor="#3578FF" />
+
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>

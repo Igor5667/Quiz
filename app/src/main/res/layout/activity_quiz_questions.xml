@@ -30,12 +30,27 @@
         <ImageView
             android:id="@+id/imageview_image"
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:contentDescription="Quiz image"
-            tools:src="@drawable/audi"
+            android:layout_marginBottom="20dp"
+            tools:src="@drawable/flag_pl"
             />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="czas na odpowiedź:"
+            android:textColor="@color/white"
+        />
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:text="60s"
+            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -118,12 +133,14 @@
 
         <Button
             android:id="@+id/btn_submit"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:backgroundTint="#032A59"
             android:text="Oddaj odpowiedź"
+            android:textColor="@color/white"
             android:textSize="20sp"
-            android:background="@color/design_default_color_background"
-            />
+            app:rippleColor="#3578FF" />
 
     </LinearLayout>
 

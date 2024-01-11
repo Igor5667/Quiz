@@ -9,10 +9,10 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-class ResultsActivity : AppCompatActivity(){
+class ResultsActivity : AppCompatActivity() {
 
-    private var nicknameTextView: String? = null
-    private var pointsAmountTextView: String? = null
+    private var playerName: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.results_activity)
@@ -20,13 +20,14 @@ class ResultsActivity : AppCompatActivity(){
         val nicknameTextView = findViewById<TextView>(R.id.nickname)
         val pointsAmountTextView = findViewById<TextView>(R.id.points_amount)
 
+        playerName = intent.getStringExtra("playerName")
+        nicknameTextView.text = playerName
 
-        nicknameTextView.text = intent.getStringExtra("playerName")
+        //warunek małej ilości punktów i dużej
         val pointsAmount = intent.getStringExtra("pointsAmount")!!.toInt()
-        if(pointsAmount > 4){
+        if (pointsAmount > 6) {
             pointsAmountTextView.setTextColor(Color.GREEN)
-        }
-        else if (pointsAmount < 3){
+        } else if (pointsAmount < 3) {
             pointsAmountTextView.setTextColor(Color.RED)
         }
         pointsAmountTextView.text = pointsAmount.toString()
@@ -34,6 +35,7 @@ class ResultsActivity : AppCompatActivity(){
 
     fun onAgainClick(view: View) {
         val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("playerName", "$playerName")
         startActivity(intent)
         finish()
     }
